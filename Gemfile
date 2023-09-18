@@ -83,8 +83,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "nokogiri", "~> 1.15"
-
 gem "faker", "~> 3.2"
 
 gem "geocoder", "~> 1.8"
@@ -94,3 +92,7 @@ gem 'acts_as_favoritor'
 gem 'acts_as_votable'
 
 gem 'pagy', '~> 6.0' # omit patch digit
+
+gem "nokogiri", "~> 1.15"
+
+gem "open-uri", "~> 0.3.0"
