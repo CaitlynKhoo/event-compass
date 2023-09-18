@@ -51,7 +51,6 @@ caitlyn_acc = User.new(
   admin: true
 )
 
-
 # # photo_url = "https://avatars.githubusercontent.com/u/138352657?v=4"
 # # file = URI.open(photo_url)
 # # caitlyn_acc.user_img.attach(io: file, filename: 'user.jpeg', content_type: "image/jpeg")
@@ -135,7 +134,7 @@ intros = [
   "Hey, fellow adventurers! Finding purpose in the pursuit of new horizons."
 ]
 
-400.times do
+100.times do
   email = Faker::Internet.unique.email
   name = Faker::Name.unique.name
   introduction = intros.sample
@@ -167,8 +166,6 @@ elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
 
-
-
 users.each do |user|
   num_favorites = [rand(15..25), rand(25..45), rand(46..200)].sample
   users_to_favorite = (users - [user]).sample(num_favorites)
@@ -179,14 +176,11 @@ users.each do |user|
   end
 end
 
-
-
 puts "Followers assigned"
 end_time = Time.now
 elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
-
 
 list_names = [
   "Festivals",
@@ -216,8 +210,7 @@ list_names = [
   "Anime Scene Reinactment"
 ]
 
-
-1200.times do
+100.times do
   user_id = users.sample.id
   name = list_names.sample
   location = Faker::Address.city
@@ -229,7 +222,7 @@ list_names = [
   if list.save
   else
     puts "Failed to create list: #{list.name} - Errors: #{list.errors.full_messages.join(', ')}"
-end
+  end
 end
 
 puts "Lists created"
@@ -237,7 +230,6 @@ end_time = Time.now
 elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
-
 
 event = ""
 no_category = Category.create!(name: "No category")
@@ -263,7 +255,6 @@ url_array.each do |url|
     card_url = element.search(".card__image").attr("href").value
     attributes = element.search(".card--event__attribute")
     categories = element.search("a[href^='/event-category/']").map { |anchor| anchor.text }
-
 
     card_html = URI.open(card_url).read
     card_doc = Nokogiri::HTML(card_html)
@@ -340,7 +331,6 @@ url_array.each do |url|
       parsed_end_date = DateTime.parse("#{end_date_info[2]} #{end_date_info[1]} #{end_time}")
     end
 
-
     url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{encoded_location_text}.json?access_token=#{ENV['MAPBOX_API_KEY']}"
     data = URI.open(url).read
     response = JSON.parse(data)
@@ -382,7 +372,6 @@ elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
 
-
 event_ids = Event.all.map(&:id)
 list_ids = List.all.map(&:id)
 
@@ -396,8 +385,7 @@ events_1 = events.each_slice(events.size/1.25).to_a[0]
 events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
-
-2400.times do
+100.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -501,8 +489,7 @@ events_1 = events.each_slice(events.size/1.25).to_a[0]
 events_2 = events.each_slice(events.size/10).to_a[8]
 events_3 = events.each_slice(events.size/10).to_a[9]
 
-
-1600.times do
+200.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -528,16 +515,13 @@ elapsed_time = end_time - run_start_time
 
 puts "Time elapsed: #{elapsed_time} seconds"
 
-
 comments = Comment.all
 
 comments_1 = comments.each_slice(comments.size/1.25).to_a[0]
 comments_2 = comments.each_slice(comments.size/10).to_a[8]
 comments_3 = comments.each_slice(comments.size/10).to_a[9]
 
-
-15000.times do
-
+200.times do
   x = rand(1..10)
   case x
   when 1..8
@@ -549,9 +533,7 @@ comments_3 = comments.each_slice(comments.size/10).to_a[9]
   end
 
   comment.liked_by users.sample
-
 end
-
 
 puts "Upvotes created"
 puts "Created #{Event.count} events!"
