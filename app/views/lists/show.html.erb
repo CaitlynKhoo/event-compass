@@ -1,5 +1,6 @@
 <%= render 'shared/list_banner'%>
 <div class="container m-auto my-5">
+    <%= render "shared/link_to_previous_page" %>
   <% @list.event_lists.each do |eventfinder| %>
     <%if eventfinder.event%>
       <div class="py-3">

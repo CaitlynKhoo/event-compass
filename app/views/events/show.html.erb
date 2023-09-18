@@ -22,10 +22,7 @@
 </div>
 <div class="container col-8">
   <div class="event-summary">
-    <a href="javascript:history.go(-1);" style="display: inline-flex; align-items: flex-start; margin: 5px 0; text-decoration: none;">
-      <i class="fa-solid fa-arrow-left" style="color: #000000; font-size: 150%;"></i>
-      <span style="margin-left: 5px; font-size: 80%; text-decoration: underline; color: #ff914d;">Previous Page</span>
-    </a>
+    <%= render "shared/link_to_previous_page" %>
     <h2>Event Summary</h2>
     <p><%=@event.description%></p>
 
